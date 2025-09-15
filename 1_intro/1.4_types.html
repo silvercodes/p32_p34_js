@@ -3,9 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <title>Document</title>
 </head>
-<body>
+<body class="container py-4">
+    <h1>Number</h1>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h5>Number type</h5>
+        </div>
+        <div class="card-body">
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <script>
+        'use strict'
+
+        const outputElem = document.getElementById('output');
+
+        // ========= Number ==========
+
+        // const integer = 34;
+        // const float = 34.87;
+        // const scient = 2.9987e3;
+        // const hex = 0xFF;
+        // const binary = 0b01001;
+        // const oct = 0o744;
+
+        // const inf = Infinity;
+        // const mInf = -Infinity;
+        // const nan = NaN;            // Not a Number
+
+        // const maxSafeInteger = Number.MAX_SAFE_INTEGER; // 2^53 - 1
+        // const minSafeInteger = Number.MIN_SAFE_INTEGER; // -(2^53 - 1)
+        // const maxValue = Number.MAX_VALUE;
+        // const minValue = Number.MIN_VALUE;
+
+        // outputElem.innerHTML = `
+        //     <p>maxSafeInteger: ${maxSafeInteger}</p>
+        //     <p>minSafeInteger: ${minSafeInteger}</p>
+        //     <p>maxValue: ${maxValue}</p>
+        //     <p>minValue: ${minValue}</p>
+        // `;
+        
+        // const num = 123.456;
+        // console.log('🟢', num.toFixed(2));
+        // console.log('🟢', num.toExponential(2));
+        // console.log('🟢', num.toPrecision(5));
+
+        // console.log('🟢', (0.1 + 0.2) === 0.3);
+
+
+
+
+        // ========== BigInt ============
+
+        // const big1 = 7236426384762843768234745872634283469823747236482643n;
+        // const big2 = BigInt('7236426384762843768234745872634283469823747236482643');
+
+        // const a = 2n ** 54n;
+        // const b = 10000000000000000000000000000000n;
+        // const sum = a + b;
+        // const prod = a * b;
+
+        // console.log('🟢', sum);
+        // console.log('🟢', prod);
+
+        // const big3 = BigInt(Number.MAX_SAFE_INTEGER) + 1n;
+
+        // const num = Number(big3);
+
+
+
+        // =========== String ===========
+
+        // const str1 = 'common string';
+        // const str2 = `Data ${str1}`;
+
+        // const str3 = 'First value \n Second value';
+        // const str4 = "\u{1F600}";
+        // console.log('🟢', str4);
+
+        // const str = 'Hello, World!';
+        // const length = str.length;
+        // const upperCase = str.toUpperCase();
+        // const lowerCase = str.toLowerCase();
+        // const substring = str.substring(0, 5);      // Hello
+        // const replaced = str.replace('World', 'Vasia');
+
+        // const index = str.indexOf('World');
+        // const includes = str.includes('World');
+        // const startsWith = str.startsWith('World');
+
+        // for (const char of str)
+        //     outputElem.innerHTML += `${char} `;
+
+
+
+        // =========== Boolean ==========
+        // const a = Boolean(1);               // true
+        // const b = Boolean(0);               // false
+        // const c = Boolean("Vasia");         // true
+        // const d = Boolean("");              // false
+        // const e = Boolean({});              // true
+        // const f = Boolean(null);            // false
+        // const g = Boolean(undefined);       // false
+        // const h = Boolean(NaN);             // false
+
+        // const equal = 5 === '5';            // false
+        // const equal2 = 5 == '5';            // true
+
+        // const falsyValues = [false, 0, '', null, undefined, NaN];
+
+
+
+
+        // =========== Null ============
+
+        const val = null;
+
+        const typeOfNull = typeof val;
+        console.log('🟢', typeOfNull);      // object (this is ERROR in JS)
+
+        console.log('🟢', val === null);        // true
+        console.log('🟢', val === undefined);   // false
+        console.log('🟢', val == undefined);    // true         !!!
+
+        let user = null;
+        user = { name: 'Vasia', age: 34 };
+
+        const isNull = user === null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
     
 </body>
 </html>
