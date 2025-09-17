@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type casting</title>
+</head>
+<body>
+    
+    <script>
+
+    // type coercion
+
+    // let num = Number('123');
+    // let res = '5' * 2;
+
+
+    // ====== to String =======
+    
+    // console.dir(String(12));                                        // '12'
+    // console.dir(String(-12.67));                                    // '-12.67'
+    // console.dir(String(null));                                      // 'null'
+    // console.dir(String(undefined));                                 // 'undefined'
+    // console.dir(String(true));                                      // 'true'
+    // console.dir(String(false));                                     // 'false'
+    // console.dir(String(NaN));                                       // 'NaN'
+    // console.dir(String(function() {console.log('test')}));          // function() {console.log('test')}
+    // console.dir(String({}));                                        // [object Object]
+    // console.dir(String({id: 123}));                                 // [object Object]
+    // console.dir(String([]));                                        // ''  
+    // console.dir(String([1, 2, 3]));                                 // '1,2,3'
+
+
+
+    // ======= to Number =======
+
+    // console.dir(Number('12'));                                        // 12
+    // console.dir(Number('-12.67'));                                    // -12.67
+    // console.dir(Number('  -12.67  '));                                // -12.67
+    // console.dir(Number('  -12.67x  '));                               // NaN        !!!
+    // console.dir(Number(''));                                          // 0
+    // console.dir(Number(null));                                        // 0
+    // console.dir(Number(undefined));                                   // NaN        !!!
+    // console.dir(Number(NaN));                                         // NaN
+    // console.dir(Number(true));                                        // 1
+    // console.dir(Number(false));                                       // 0
+    // console.dir(Number(function() {console.log('test')}));            // NaN
+    // console.dir(Number({}));                                          // NaN        !!!
+    // console.dir(Number({id: 101}));                                   // NaN        !!!
+    // console.dir(Number([]));                                          // 0          !!!
+    // console.dir(Number([1]));                                         // 1          !!!
+    // console.dir(Number(['1']));                                       // 1          !!!
+    // console.dir(Number(['1', 2, 3]));                                 // NaN        !!!
+    
+
+
+    // ========== to Boolean =========
+    // console.dir(Boolean(''));                                       //      false
+    // console.dir(Boolean('string'));                                 // true
+    // console.dir(Boolean('false'));                                  // true
+    // console.dir(Boolean(0));                                        //      false
+    // console.dir(Boolean(23));                                       // true
+    // console.dir(Boolean(-23));                                      // true
+    // console.dir(Boolean(NaN));                                      //       false
+    // console.dir(Boolean(null));                                     //       false
+    // console.dir(Boolean(undefined));                                //       false
+    // console.dir(Boolean(function() {console.log('test')}));         // true
+    // console.dir(Boolean({}));                                       // true
+    // console.dir(Boolean([]));                                       // true
+    // console.dir(Boolean([23]));                                     // true
+
+
+
+    // console.log('🟢', 5 + '3');             // '53'     !!!
+    // console.log('🟢', 5 - '3');             // 2
+    // console.log('🟢', 5 + '-3');            // '5-3'
+    // console.log('🟢', 5 - +3);              // 2
+    // console.log('🟢', 5 + -3);              // 2
+    // console.log('🟢', 5 + +'3');            // 8
+
+    // const ageString = '34';
+    // const age = +ageString;
+    // console.log('🟢', age);
+
+
+
+    // ============== OPERATORS =============
+    
+    // + - * / % ** +<unary> +<unary>
+    // += -= **= ....
+
+    // =
+    // let a, b, c;
+    // a = b = c = 45;
+    // console.log('🟢', a = 3 + 5 * 3);
+
+    // ++ --
+            // let a = 5;
+            // console.log('🟢', ++a);     // 6        a = 6
+            // console.log('🟢', a++);     // 6        a = 7
+
+            // let x = 5;
+            // console.log('🟢', x++ * 2);     // 10       x = 6
+            // console.log('🟢', ++x * 2);     // 14       x = 7
+
+            // let f = 5.7;
+            // console.log('🟢', ++f);             // 6.7
+
+            // let val = '5';
+            // console.log('🟢', ++val);               // 6
+
+    // ,
+            // let c;                       
+            // let b = (c = 3 + 4, 5 + 6);
+            // console.log('🟢', b);                       // 11 !!!
+
+    
+    // > >= < <= == === != !==
+    
+            // let a = 0;
+            // let b = '0';
+            // console.log('🟢', a == b);              // true
+
+            // console.log('🟢', 12 == '12');          // true
+            // console.log('🟢', 12 === '12');         // false
+
+            // console.log('🟢', null == undefined);   // true         !!!
+            // console.log('🟢', null === undefined);  // false
+
+            // console.log('🟢', undefined == 0);      // false
+            // console.log('🟢', undefined < 0);       // false
+            // console.log('🟢', undefined > 0);       // false
+
+
+    
+
+    // if(condition) {
+
+    // } else if (condition) {
+
+    // } else {
+
+    // }
+
+    // let res = true ? 12 : 15;
+
+
+
+    // || && ! ??       ||= &&= ??=  (?? - Оператор нулевого слияния)
+
+    console.log('🟢', 1 || 0);      // true || 0 ----> return 1
+
+    let email = '';
+    const correctEmail = email || 'no_email';
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
