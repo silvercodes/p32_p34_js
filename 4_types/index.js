@@ -1,3 +1,5 @@
+'use strict'
+
 //#region ================== Symbol =======================
 
 // let a = Symbol();
@@ -222,21 +224,235 @@
 // const arr1 = new Array();
 // const arr2 = [];
 
-const planets = ['Mercury', 'Venus', 'Earth', 'Mars'];
-console.log('🟢', planets);
-console.log('🟢', planets[1]);
-console.log('🟢', planets.length);
+// const planets = ['Mercury', 'Venus', 'Earth', 'Mars'];
+// console.log('🟢', planets);
+// console.log('🟢', planets[1]);
+// console.log('🟢', planets.length);
 
-console.log('🟢', planets.at(-1));
-
-
+// console.log('🟢', planets.at(-1));
 
 
 
 
+// function f() {
+//     console.log('🟢', arguments);
+//     console.log('🟢', Array.from(arguments));
+// }
+// f(2, 3);
+
+// const container = {
+//     from: 0,
+//     to: 10,
+
+//     [Symbol.iterator]() {
+//         return {                                // <---- Объект итератора
+//             current: this.from,
+//             end: this.to,
+//             next() {                            // <---- !!!
+//                 if (this.current <= this.end)
+//                     return {
+//                         done: false,            // <-----
+//                         value: this.current++   // <-----
+//                     };
+//                 else
+//                     return {
+//                         done: true,
+//                     }
+//             }
+//         };
+//     }
+// };
+
+// console.log('🟢', Array.from(container));
+// console.log('🟢', Array.from(container, v => v * 2));
+
+//#endregion
+
+
+//#region *** Array под капотом
+
+// PACK --> элементы одного типа --> непрерывная область памяти --> O(1)
+    // int* arr = new int[1000]{};
+    // arr[500] --> *(arr + 500 * sizeof(int))
+
+// Holley arrays --> элементы разного типа или есть дыры --> Динамический массив
+
+// Dictionary Mode --> для очень разреженных массивов --> хэш-таблица --> O(1)
+
+//#endregion
+
+
+//#region Map / Set / WeakMap / WeakSet
+
+// const map = new Map();
+// console.dir(Map);
+// console.log('🟢', map);
+
+// map.set('101', 'vasia');
+// map.set(101, 'Petya');
+// map.set(false, 'Kolya');
+
+// console.log('🟢', map);
+// console.log('🟢', map.get(101));
+// console.log('🟢', map.size);
+// map.size = 10;
+// console.log('🟢', map);
+
+
+// const user = {
+//     id: 101,
+//     email: 'vasia@mail.com',
+// };
+// const map = new Map();
+// map.set(user, 1000);
+// console.log('🟢', map);
 
 
 
+// :-)))
+// const map = new Map();
+// map
+//     .set(101, 'vasia')
+//     .set(102, 'Petya');
+
+
+// :-)))
+// const map = new Map([
+//     ['vasia', 101],
+//     ['petya', 200],
+//     ['kolya', 300],
+// ]);
+// console.log('🟢', map);
+
+// console.log('🟢', map.keys());
+// for (let key of map.keys())
+//     console.log('🟢', key);
+
+// for (let val of map.values())
+//     console.log('🟢', val);
+
+// for (let item of map)
+//     console.log('🟢', item);
+
+// map.forEach((v, k, m) => {
+//     console.log('🟢', v);
+// });
+
+
+//====== object to Map
+// const user = {
+//     id: 101,
+//     email: 'vasia@mail.com',
+// };
+
+// console.log('🟢', Object.entries(user));
+// const map = new Map(Object.entries(user));
+// console.log('🟢', map);
+
+// ===== Map to object
+// const map = new Map([
+//     ['vasia', 101],
+//     ['petya', 200],
+//     ['kolya', 300],
+// ]);
+// const obj = Object.fromEntries(map);
+// const obj2 = Object.fromEntries(map.entries());
+// console.log('🟢', obj);
+// console.log('🟢', obj2);
+
+
+
+
+// const set = new Set();
+// const a = {id: 101};
+// const b = {id: 102};
+// const c = {id: 103};
+
+// set.add(a);
+// set.add(b);
+// set.add(c);
+// set.add(a);
+// set.add(a);
+
+// console.log('🟢', set);
+
+// for (let item of set)
+//     console.log('🟢', item);
+
+// set.forEach(item => console.log('🟢', item));
+
+// const arr = [4, 6, 7, 2, 4, 5, 6, 7];
+
+// console.log('🟢', Array.from(new Set(arr)));
+
+
+
+
+
+// const wm = new WeakMap();
+
+// let user = {id: 101};
+
+// wm.set(user, 'password');
+// console.log('🟢', wm.get(user));
+
+// user = null;
+
+// for (let i = 0; i < 1000000; ++i)
+//     i++;
+
+// console.log('🟢', wm);
+
+
+
+
+
+
+// const ws = new WeakSet();
+
+// let user = {id: 101};
+
+// ws.add(user);
+// console.log('🟢', ws.has(user));
+
+// user = null;
+
+// console.log('🟢', ws.has(user));
+
+
+//#endregion
+
+
+//#region Destruction (array, object)
+
+// ---- array
+
+// const arr = ['vasia', 101];
+// const [name, id] = arr;             // Деконструирующее присваивание
+// console.log('🟢', name, id);
+
+
+// const arr = ['vasia', 101, 'vasia@mail.com'];
+// const [name, , email] = arr;
+
+
+// const name = 'Vasia';
+// const [a, b, c] = name;
+// console.log('🟢', a, b, c);
+
+
+const user = {};
+const input = "Vasia Ivanov";
+[user.name, user.lastname] = input.split(' ');
+console.log('🟢', user);
+
+
+
+
+
+
+
+//#endregion
 
 
 
