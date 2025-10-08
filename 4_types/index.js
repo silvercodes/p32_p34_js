@@ -441,25 +441,178 @@
 // console.log('🟢', a, b, c);
 
 
-const user = {};
-const input = "Vasia Ivanov";
-[user.name, user.lastname] = input.split(' ');
-console.log('🟢', user);
+// const user = {};
+// const input = "Vasia Ivanov";
+// [user.name, user.lastname] = input.split(' ');
+// console.log('🟢', user);
+
+
+// const user = {id: 101, email: 'vasia@mail.com'};
+// for (let [k, v] of Object.entries(user))
+//     console.log('🟢', k, v);
+
+
+// const planets = ['Mercury', 'Venus', 'Earth', 'Mars'];
+// const [p1, p2, ...other] = planets;
+// console.log('🟢', p1, p2, other);
+
+
+// const [a = 2, b = 'val'] = [100];
+// console.log('🟢', a, b);
+
+
+// let a = 34;
+// let b = 56;
+// [b, a] = [a, b];
+// console.log('🟢', a, b);
 
 
 
 
+// ---- object
+
+// const user = {
+//     id: 101,
+//     email: 'brus@mail.com',
+//     age: 65
+// };
+
+// const {id, email} = user;
+// const {age} = user;
+// console.log('🟢', id, email, age);
+
+// const {id: identity, email} = user;
+// console.log('🟢', identity, email);
+
+// const {email = 'no_email', role = 'guest'} = user;
+// console.log('🟢', email, role);
+
+// const {
+//     id: identity = 0,
+//     role: roleTitle = 'guest',
+// } = user;
+
+// console.log('🟢', identity, roleTitle);
 
 
+// const {
+//     email: e = 'no_email',
+//     ...tail
+// } = user;
+// console.log('🟢', e, tail);
+
+
+
+// const unit = {
+//     id: 101,
+//     title: 'archer',
+//     hp: 50,
+//     position: {
+//         x: 10,
+//         y: 20,
+//     },
+//     weapon: [
+//         'sward',
+//         'bow'
+//     ]
+// };
+
+// let {
+//     title: name = 'no_name',
+//     position: {
+//         x: xCoord = 0
+//     },
+//     weapon: [
+//         priorityWeapon
+//     ],
+//     ...tail
+// } = unit;
+
+// console.log('🟢', name, xCoord, priorityWeapon, tail);
+// console.log('🟢', unit);
+
+
+
+// function render({
+//     title: t = 'no_title',
+//     price: p = 0,
+//     weapon: [
+//         priorityWeapon = 'no_weapon'
+//     ]
+// }) {
+//     console.log('🟢', t, p, priorityWeapon);
+// }
+
+// render(unit);
+
+
+
+// function render({
+//     title: t = 'no_title',
+//     price: p = 0,
+// } = {}) {
+//     console.log('🟢', t, p);
+// }
+
+// render({});
+// render();
 
 //#endregion
 
 
+//#region JSON
+
+// const unit = {
+//     id: 101,
+//     title: 'archer',
+//     hp: 50,
+//     position: {
+//         x: 10,
+//         y: 20,
+//     },
+//     weapon: [
+//         'sward',
+//         'bow'
+//     ]
+// };
+
+// const user = {
+//     id: 101, 
+//     email: 'vasia@mail.com',
+//     age: 23,
+//     role: 'admin'
+// };
+
+// console.log('🟢', JSON.stringify(user));
+// console.log('🟢', JSON.stringify(unit));
+
+// const json = JSON.stringify(unit);
+// console.log('🟢', json);
+// const obj = JSON.parse(json);
+// console.log('🟢', obj);
 
 
 
+// console.log('🟢', JSON.stringify(user, (k, v) => {
+//     return k === 'role' ? undefined : v;
+// }));
 
 
+// console.log('🟢', JSON.stringify(user, null, 4));
 
 
+// const data = '{"id":101,"title":"laptop","date":"2025-10-08T19:17:30"}';
 
+// // const obj = JSON.parse(data);
+// // console.log('🟢', obj);
+
+// const obj = JSON.parse(data, (k, v) => {
+//     if (k === 'date')
+//         return new Date(v);
+
+//     return v;
+// });
+
+// console.log('🟢', obj);
+
+//#endregion
