@@ -335,7 +335,87 @@
 // console.log('🟢', global);
 // console.log('🟢', globalThis);
 
-console.log('🟢', this);
+// console.log('🟢', this);
+
+
+// console.log('🟢', window);
+
+// console.log('🟢', Math);
+// console.log('🟢', window.Math);
+// console.log('🟢', globalThis.Math);
+
+
+// --- GLE
+
+// var a = 'vasia';
+// let b = 'petya';
+
+// console.log('🟢', window);
+
+
+
+// var a = 34;
+// let b = 45;
+
+// console.log('🟢', window.a);
+// console.log('🟢', window.b);
+
+
+
+// var a = 10;
+// window.b = 20;
+
+// console.log('🟢', a);
+// console.log('🟢', b);
+
+
+
+// var a = 10;
+// window.b = 200;
+
+// delete window.a;        // ERROR
+// delete window.b;        // :-))
+
+
+// console.log('🟢', window);
+// var setTimeout = 'ooops';       // !!!!!
+// let setInterval = 'OKOKOK';
+// console.log('🟢', window);
+
+//#endregion
+
+//#region Function as a Object
+
+
+// window.a(10);
+
+// function a(val) {
+//     console.log('🟢', val);
+// }
+
+// console.log('🟢', window);
+
+// console.dir(a);
+// a.id = 101;
+// console.dir(a);
+// a.info = function() {
+//     console.log('🟢', 'info :-)');
+// }
+// console.dir(a);
+
+
+function run() {
+    console.log('🟢', 'hello');
+    run.count++;
+}
+run.count = 0;
+
+run();
+run();
+run();
+
+console.dir(run);
 
 
 //#endregion
+
