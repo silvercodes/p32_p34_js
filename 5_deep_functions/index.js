@@ -404,18 +404,108 @@
 // console.dir(a);
 
 
-function run() {
-    console.log('🟢', 'hello');
-    run.count++;
-}
-run.count = 0;
+// function run() {
+//     console.log('🟢', 'hello');
+//     run.count++;
+// }
+// run.count = 0;
 
-run();
-run();
-run();
+// run();
+// run();
+// run();
 
-console.dir(run);
+// console.dir(run);
+
+
+
+
+// ---------------- NFE (Named Function Expression) ---------------
+
+// let f = function test() {
+//     //
+//     test();
+// };
+
+// f();
+
+
+
+// ---------------- new Function() ----------------
+
+// const a = new Function('a', 'b', 'return a + b;');
+// console.dir(a);
+// console.log('🟢', a(3, 4));
+
+
+// eval('console.log("test string");');
 
 
 //#endregion
 
+//#region setTimeout() setInterval()
+
+// const timer = setTimeout(() => console.log('🟢', 'test'), 3000);
+// console.log('🟢', timer);
+
+
+// function render(message) {
+//     console.log('🟢', message);
+// }
+
+// setTimeout(render, 2000, 'Vasia')
+
+
+// function f() {
+//     console.log('🟢', this);
+// }
+// setTimeout(f, 1000);
+
+
+
+// setTimeout(() => console.log('🟢', 'test_1'), 0);
+// setTimeout(() => console.log('🟢', 'test_2'), 0);
+// setTimeout(() => console.log('🟢', 'test_3'), 0);
+// setTimeout(() => console.log('🟢', 'test_4'), 0);
+// setTimeout(() => console.log('🟢', 'test_5'), 0);
+// setTimeout(() => console.log('🟢', 'test_6'), 0);
+
+// console.log('🟢', 'xxx_1');
+// console.log('🟢', 'xxx_2');
+// console.log('🟢', 'xxx_3');
+// console.log('🟢', 'xxx_4');
+// console.log('🟢', 'xxx_5');
+
+
+
+
+// const timerNum = setTimeout(() => console.log('🟢', 'test'), 3000);
+// setTimeout(() => clearTimeout(timerNum), 1000);
+
+
+
+// let count = 0;
+// const timer = setInterval(() => console.log('🟢', ++count), 1000);
+// setTimeout(() => clearInterval(timer), 5000);
+
+
+
+
+// let delay = 3000;
+
+// let temerId = setTimeout((req) => {
+//     // fetch to server
+//     //
+//     // if (error)
+//     //     delay += 500;
+
+//     console.log('🟢', 'success');
+
+//     setTimeout((req) => {
+        
+//     }, delay);
+
+// }, delay);
+
+
+
+//#endregion
