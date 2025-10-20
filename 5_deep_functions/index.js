@@ -443,7 +443,6 @@
 //#endregion
 
 //#region setTimeout() setInterval()
-
 // const timer = setTimeout(() => console.log('🟢', 'test'), 3000);
 // console.log('🟢', timer);
 
@@ -506,6 +505,295 @@
 
 // }, delay);
 
+//#endregion
+
+//#region decorators + call + apply + spread operator
+
+// ---- Самый простой декоратор
+
+// function calc(a) {
+//     console.log('🟢', `calc() with ${a}`);
+
+//     return a * 2;
+// }
+
+// function cacheDecorator(fn) {
+//     const cache = new Map();
+
+//     return function(val) {
+//         if (cache.has(val)) {
+//             console.log('🟢', `from cahche ${cache.get(val)}`);
+//             return cache.get(val);
+//         }
+
+//         let result = fn(val);
+//         cache.set(val, result);
+
+//         return result;
+//     }
+// }
+
+// calc(5);
+// const cachedFunction = cacheDecorator(calc);
+// cachedFunction(5);
+// cachedFunction(6);
+// cachedFunction(7);
+// cachedFunction(5);
+// cachedFunction(5);
+
+
+
+
+// ---- Добавим возможность декорировать методы объекта
+
+// const user = {
+//     // factor: 2,
+//     getFactor() {
+//         return 2;
+//     },
+//     calc(val) {
+//         console.log('🟢', `calc() with ${val}`);
+//         return val * this.getFactor();
+//     }
+// };
+
+// function cacheDecorator(fn) {
+//     const cache = new Map();
+
+//     return function(val) {
+//         if (cache.has(val)) {
+//             console.log('🟢', `from cahche ${cache.get(val)}`);
+//             return cache.get(val);
+//         }
+
+//         // let result = fn(val);        // ERROR (this === undefined)
+
+//         // let arrow = () => fn(val);   // ERROR (this === undefined)
+//         // let result = arrow();
+
+//         let result = fn.call(this, val);    // :-)))
+
+
+//         cache.set(val, result);
+
+//         return result;
+//     };
+// }
+
+// // console.log('🟢', user.calc(5));
+
+// user.calc = cacheDecorator(user.calc);
+// console.log('🟢', user.calc(3));
+// console.log('🟢', user.calc(4));
+// console.log('🟢', user.calc(3));
+
+
+
+
+// function f() {
+//     console.log('🟢', this.val);
+// }
+
+// const user = {
+//     val: 10,
+// }
+
+// const a = {val: 101, email: 'vasia@mail.com'};
+// const b = {val: 202};
+
+// // f();            // cannot read properties of undefined
+
+// new f();            // undefined
+
+// user.f = f;
+// user.f();           // 10
+
+// f.call(user);       // 10
+// f.call(a);          // 101
+// f.call(b);          // 202
+
+
+
+
+// ----- Добавим возможность декорировать функции с любым количеством параметров
+
+// const user = {
+//     // factor: 2,
+//     getFactor() {
+//         return 2;
+//     },
+//     calc(a, b) {
+//         console.log('🟢', `calc() with ${a}, ${b}`);
+//         return a * this.getFactor() + b;
+//     }
+// };
+
+// function cacheDecorator(fn, hashFn) {
+//     const cache = new Map();
+
+//     return function() {
+//         let key = hashFn(arguments);
+//         console.log('🟢', `key = ${key}`);
+
+//         if (cache.has(key)) {
+//             console.log('🟢', `from cahche ${cache.get(key)}`);
+//             return cache.get(key);
+//         }
+
+//         // let result = fn.apply(this, arguments);
+
+//         let result = fn.call(this, ...arguments);
+
+//         cache.set(key, result);
+
+//         return result;
+//     };
+// }
+
+// user.calc = cacheDecorator(user.calc, (args) => {
+//     let str = '';
+//     for (let a of args)
+//         str += a;
+
+//     return str;
+// });
+
+// user.calc = cacheDecorator(user.calc, args => [].join.call(args, ''));
+
+
+// console.log('🟢', user.calc(3, 1));
+// console.log('🟢', user.calc(4, 1));
+// console.log('🟢', user.calc(3, 1));
+
 
 
 //#endregion
+
+//#region logDecorator
+
+// function logDecorator(fn) {
+//     function wrapper(...args) {
+//         wrapper.logs.push(args);
+
+//         return fn.apply(this, args);
+//     }
+
+//     wrapper.logs = [];
+
+//     return wrapper;
+// }
+
+// function exec(a, b) {
+//     return a + b;
+// }
+
+// exec = logDecorator(exec);
+
+// console.log('🟢', exec(1, 3, 7, 12));
+// console.log('🟢', exec(6, 7));
+// console.log('🟢', exec(0, 8));
+
+// console.dir(exec);
+
+
+//#endregion
+
+//#region throttleDecorator
+
+// function throttleDecorator(fn, interval) {
+//     let lastTime;
+
+//     return function() {
+//         let lastExecPeriod = Date.now() - lastTime;
+
+//         if (!lastTime || lastExecPeriod >= interval) {
+//             fn.apply(this, arguments);
+//             lastTime = Date.now();
+//         }
+//     }
+// }
+
+// // let i = 0;
+// // function f() {
+// //     console.log('🟢', ++i);
+// // }
+
+// // f = throttleDecorator(f, 100);
+
+// // for(let i = 0; i < 100e6; ++i)
+// //     f();
+
+
+
+// let i = 0;
+// function f() {
+//     console.log('🟢', ++i);
+// }
+
+// f = throttleDecorator(f, 100);
+
+// document.addEventListener('mousemove', f);
+
+
+//#endregion
+
+//#region singletonDecorator
+
+// function singletonDecorator(fn) {
+//     let canRun = true;
+//     let result;
+
+//     return function() {
+//         if (canRun) {
+//             result = fn.apply(this, arguments);
+//             canRun = false;
+//         }
+
+//         return result;
+//     }
+// }
+
+// function f() {
+//     console.log('🟢', 'f() was called');
+//     return 10;
+// }
+
+// f = singletonDecorator(f);
+
+// console.log('🟢', f());
+// console.log('🟢', f());
+// console.log('🟢', f());
+// console.log('🟢', f());
+// console.log('🟢', f());
+
+//#endregion
+
+//#region debounceDecorator
+
+// function debounceDecorator(fn, interval) {
+//     let timer;
+
+//     return function() {
+//         clearTimeout(timer);
+//         let args = arguments;
+//         let self = this;
+
+//         timer = setTimeout(function() {
+//             fn.apply(self, args);
+//         }, interval);
+//     }
+// }
+
+// let i = 0;
+// function f() {
+//     console.log('🟢', ++i);
+// }
+
+// f = debounceDecorator(f, 500);
+
+// document.addEventListener('mousemove', f);
+
+//#endregion
+
+
+
