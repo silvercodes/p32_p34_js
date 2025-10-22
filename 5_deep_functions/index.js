@@ -795,5 +795,108 @@
 
 //#endregion
 
+//#region bind()
+
+// const user = {
+//     email: 'vasia@mail.com',
+//     render() {
+//         console.log('🟢', this);
+//         console.log('🟢', this.email);
+//     }
+// };
+
+// // user.render();
+
+// // setTimeout(function() {
+// //     user.render();
+// // }, 1000);
+
+// // setTimeout(() => user.render(), 1500);
+
+// // setTimeout(user.render, 2000);
+
+// // let f = user.render;
+// // // f();                    // ERROR
+// // f.call(user);
+
+// // f.apply(user);
+
+// // f = f.bind(user);
+// // f();
+
+// setTimeout(user.render.bind(user), 1000);
+
+//#endregion
+
+//#region arraow functions
+
+// const user = {
+//     email: 'vasia@mail.com',
+//     grades: [8, 9, 10, 9, 12],
+//     render1() {
+//         this.grades.forEach(function(g) {
+//             console.log('🟢', `email: ${user.email}: ${g}`);            // :-(
+//         });
+//     },
+//     render2() {
+//         this.grades.forEach(function(g) {
+//             console.log('🟢', `email: ${this.email}: ${g}`);            // :-)
+//         }.bind(this));
+//     },
+//     render3() {
+//         this.grades.forEach(function(g) {
+//             console.log('🟢', `email: ${this.email}: ${g}`);            // :-)
+//         }, this);
+//     }
+// };
+// user.render1();
+// user.render2();
+// user.render3();
+
+
+
+
+// const user = {
+//     email: 'vasia@mail.com',
+//     grades: [8, 9, 10, 9, 12],
+//     render() {
+//         this.grades.forEach(g => {
+//             console.log('🟢', `email: ${this.email}: ${g}`);
+//         });
+//     }
+// };
+// user.render();
+
+
+
+// const user = {
+//     id: 202,
+// }
+
+// function delayDecorator(fn, delay) {
+//     return function() {
+//         setTimeout(() => fn.call(this, ...arguments), delay)
+//     };
+
+//     // return function() {
+//     //     setTimeout(function() { 
+//     //         fn.call(this, ...arguments);
+//     //     }, delay)
+//     // };
+// }
+
+
+// function f(a, b, c) {
+//     console.log('🟢', this);
+//     console.log('🟢', a, b, c);
+// }
+
+// const df = delayDecorator(f, 2000);
+
+// df('vasia', 34, {});
+// df.call(user);
+
+
+//#endregion
 
 
