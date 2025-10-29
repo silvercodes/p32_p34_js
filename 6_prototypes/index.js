@@ -400,12 +400,4 @@ String.prototype.hohoho = function() {
 
 'Vasia'.hohoho();
 
-
-
-
-
 //#endregion
-
-
-
-
