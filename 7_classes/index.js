@@ -158,7 +158,8 @@
 //     }
 
 //     getSlug() {
-//         return 'admin';
+//         return super.getSlug();
+//         // return 'admin';
 //     }
 // }
 
@@ -169,6 +170,267 @@
 
 
 
+
+
+
+// const user = {
+//     render() {
+//         console.log('🟢', 'Method render()');
+//     },
+//     auth: function() {
+//         console.log('🟢', 'Property auth');
+//     },
+//     log: () => console.log('🟢', 'Arrow function log()'),
+// };
+
+// const admin = {
+//     test() {
+//         super.render();
+//         super.auth();
+//         super.log();
+//     },
+//     // auth: function() {
+//     //     super.auth();
+//     // },
+//     auth() {
+//         super.auth();
+//     },
+
+//     __proto__: user,
+// };
+
+// // admin.render();
+// // admin.auth();
+// // admin.log();
+
+// admin.auth();
+// admin.test();
+
+
+
+
+
+
+// class Unit {
+//     handler = function() {}
+//     render() {
+
+//     }
+// }
+
+
+//#endregion
+
+
+//#region static
+
+// class User {
+//     static _maxId = 0;
+//     _permissions = ['read'];
+
+//     id = 0;
+
+//     get permissions() {
+//         return this._permissions;
+//     }
+//     set permissions(value) {
+//         this._permissions = value;
+//     }
+//     static get maxId() {
+//         return this._maxId;
+//     }
+//     constructor(email) {
+//         this.id = ++(User._maxId);
+//         this.email = email;
+//     }
+//     static selfCompare(a, b) {
+//         return a.id - b.id;
+//     }
+//     render() {
+//         console.log('🟢', `id: ${this.id}, email: ${this.email}`);
+//     }
+// }
+
+// console.dir(User);
+// const a = new User('vasia@mail.com');
+// console.log('🟢', a);
+
+
+
+
+
+// class User {
+//     static _maxId = 0;
+//     _permissions = ['read'];
+
+//     id = 0;
+
+//     get permissions() {
+//         return this._permissions;
+//     }
+//     set permissions(value) {
+//         this._permissions = value;
+//     }
+//     static get maxId() {
+//         return this._maxId;
+//     }
+//     constructor(email) {
+//         this.id = ++(User._maxId);
+//         this.email = email;
+//     }
+//     static selfCompare(a, b) {
+//         return a.id - b.id;
+//     }
+//     render() {
+//         console.log('🟢', `id: ${this.id}, email: ${this.email}`);
+//     }
+// }
+
+// class Admin extends User {
+//     constructor(email) {
+//         super(email);
+//     }
+// }
+
+// console.dir(Admin);
+// console.log('🟢', Admin._maxId);
+// const a = new Admin('petya@mail.com');
+// console.log('🟢', a);
+
+// const id = Object.getPrototypeOf(Object.getPrototypeOf(a)).constructor._maxId;
+// console.log('🟢', id);
+
+
+//#endregion
+
+
+//#region public / protected / readonly / private
+
+// class User {
+//     // public
+//     id = 101;
+
+//     // protected
+//     _email = '';
+
+//     // readonly
+//     _password
+//     get password() {return this._password};
+
+//     // private
+//     #avatarFile = '';
+//     #setAvatarFile(path) {
+//         this.#avatarFile = path;
+//     }
+//     get avatarFile() {
+//         return this.#avatarFile;
+//     }
+//     constructor(path) {
+//         this.#setAvatarFile(path);
+//     }
+// }
+
+// console.dir(User);
+// const a = new User('/var/avatars/1.png');
+// console.log('🟢', a);
+// // a.#setAvatarFile('/')        // ERROR
+
+
+
+
+// class User {
+//     #id = 0;
+//     #email = '';
+//     #pass = '';
+
+//     constructor(id) {
+//         this.#id = id;
+//     }
+
+//     get email() {
+//         return this.#email;
+//     }
+//     set email(value) {
+//         this.#email = this.#prepareEmail(value);
+//     }
+//     set #password(value) {
+//         this.#pass = 'HASH_HASH';
+//     }
+//     #prepareEmail(email) {
+//         return email.toLowerCase();
+//     }
+//     set password(value) {
+//         this.#password = value;
+//     }
+// }
+
+// const a = new User(101);
+// console.log('🟢', a);
+
+//#endregion
+
+
+//#region Наследование от стандартных классов
+
+// class Container extends Array {
+//     constructor(...args) {
+//         super(...args);
+//     }
+
+//     getCount() {
+//         return this.length;
+//     }
+// }
+
+// const b = new Container(2, 4, 6, 7, 8);
+// console.log('🟢', b);
+// console.log('🟢', b.getCount());
+
+//#endregion
+
+
+//#region instanceof
+
+// class User {}
+
+// class Admin extends User {}
+
+// const a = new Admin();
+
+// // хулиганим
+// // const p = Object.getPrototypeOf(a);
+// // Object.setPrototypeOf(p, Object.prototype);
+
+// console.log('🟢', a instanceof User);
+
+// console.log(Object.getPrototypeOf(a) === User.prototype);                        // false
+// console.log(Object.getPrototypeOf(Object.getPrototypeOf(a)) === User.prototype); // true
+
+//#endregion
+
+
+//#region mixins
+
+// const renderMixin = {
+//     render() {
+//         console.log('🟢', `id: ${this.id}`);
+//     }
+// };
+
+// class User {
+//     constructor(id) {
+//         this.id = id;
+//     }
+// }
+
+// // User.prototype.render = renderMixin.render;
+
+// Object.assign(User.prototype, renderMixin);
+
+// const user = new User(102);
+// user.render();
+// console.dir(User);
+// console.log('🟢', user);
 
 //#endregion
 
