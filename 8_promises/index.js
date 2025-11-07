@@ -159,28 +159,108 @@
 //     .then(val => console.log('🟢', val));
 
 
-function mockFetch(url) {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res({
-                json: () => Promise.resolve({
-                    id: 101,
-                    email: 'vasia@mail.com',
-                    age: 23,
-                })
-            })
-        }, 1000);
-    });
-}
+// function mockFetch(url) {
+//     return new Promise((res, rej) => {
+//         setTimeout(() => {
+//             res({
+//                 json: () => Promise.resolve({
+//                     id: 101,
+//                     email: 'vasia@mail.com',
+//                     age: 23,
+//                 })
+//             })
+//         }, 1000);
+//     });
+// }
 
-mockFetch('http://data.com')
-    .then(obj => obj.json())
-    .then(val => console.log('🟢', val));
+// mockFetch('http://data.com')
+//     .then(obj => obj.json())
+//     .then(val => console.log('🟢', val));
 
     
 
+// async function f() {
+//     const promise = new Promise((resolve, reject) => {
+//         setTimeout(() => resolve('DONE!'), 1000);
+//     });
+
+//     const res = await promise;
+
+//     console.log('🟢', res);
+// }
+
+// f();
+
+// console.log('🟢', 'test');
 
 
+
+
+// (async () => {
+//     const result = await fetch('https://google.com');
+//     console.log('🟢', result);
+// })();
+
+
+
+
+
+// class Container {
+//     async test() {
+//         return await fetch('data.json');
+//     }
+// }
+
+// const a = new Container();
+// a.test().then(res => console.log('🟢', res));
+
+
+
+
+
+// async function f() {
+//     await Promise.reject(new Error('This is error'));
+// }
+// // >>> EQUALS <<<
+// async function f2() {
+//     throw new Error('This is error 2');
+// }
+
+
+
+// async function f() {
+//     try {
+//         const response = await fetch('https://google8765433456787654.com');
+//         const data = await response.json();
+//         console.log('🟢', data);
+//     } catch (error) {
+//         console.log('🟢', error);
+//     }
+    
+// }
+
+// f();
+
+
+
+// async function f() {
+//     const response = await fetch('https://google8765433456787654.com');
+//     const data = await response.json();
+//     console.log('🟢', data);
+// }
+
+// f().catch(err => console.log('🟢', err));
+
+
+console.log('start');
+function a() {
+    function b() {
+        console.log(1);
+    }
+    b();
+}
+a();
+console.log('finish');
 
 
 //#endregion
